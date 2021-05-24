@@ -4,9 +4,10 @@ import {
   setNotificationVisibilty,
   setHideForever,
   setNotificationOrder,
-} from '../redux/actions/setNotification';
+} from '../setNotification';
+import {notificationType} from '../types';
 
-export let notificationId = 0;
+export let notificationId: number = 0;
 
 export function incrementNotificationId() {
   notificationId = notificationId + 1;
@@ -15,12 +16,12 @@ export function incrementNotificationId() {
 const useNotification = () => {
   const dispatch = useDispatch();
 
-  function execNotification(type, title, text, timeout) {
+  function execNotification(type: notificationType, title: string, text: string, timeout: number) {
     notificationId++;
 
-    const currentId = notificationId;
+    const currentId: number = notificationId;
 
-    function createNotification(currentId) {
+    function createNotification(currentId: number) {
       dispatch(
         setNewNotification({
           id: currentId,
@@ -37,7 +38,7 @@ const useNotification = () => {
         dispatch(setNotificationVisibilty(currentId, true));
       }, 1);
     }
-    function killNotification(currentId) {
+    function killNotification(currentId: number) {
       dispatch(setNotificationVisibilty(currentId, false));
       dispatch(setNotificationOrder(currentId, 0));
       setTimeout(() => {

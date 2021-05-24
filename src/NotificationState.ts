@@ -1,7 +1,8 @@
-const initialState = [];
+import {AnyAction} from 'redux';
+const initialState: any[] = [];
 
-const notificationState = (state = initialState, action) => {
-  let newState = state;
+const notificationState = (state = initialState, action: AnyAction): any[] => {
+  let newState: any[] = state;
 
   switch (action.type) {
     case 'REMOVE_ALL_NOTIFICATIONS':

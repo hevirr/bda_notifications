@@ -5,7 +5,7 @@ import {
   setHideForever,
   setNotificationOrder,
   removeAllNotifications,
-} from '../../redux/actions/setNotification';
+} from '../setNotification';
 
 import Notification from './Notification';
 
